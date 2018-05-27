@@ -1,4 +1,10 @@
 import serial
+import os
+
+
+MAC_ADDR='00:12:6F:36:F3:72 1'
+command = 'sudo rfcomm bind /dev/rfcomm1 '+MAC_ADDR
+os.system(command)
 
 ser = serial.Serial('/dev/rfcomm1',19200,timeout=5)
 file = open("/home/pi/temp.txt","w")
@@ -36,3 +42,4 @@ else:
     file.write(a+b+c+d+e+' ')
 ser.close
 file.close()
+os.system('sudo rfcomm release rfcomm1')

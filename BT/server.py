@@ -1,25 +1,45 @@
-"""
-A simple Python script to receive messages from a client over
-Bluetooth using PyBluez (with Python 2).
-"""
+import os
+import time
+import serial
 
-import bluetooth
+#MAC_ADDRES KLIENTA
+MAC_ADDR='00:12:6F:36:F3:72 1'
+command = 'sudo rfcomm bind /dev/rfcomm1 '+MAC_ADDR
+os.system(command)
 
-hostMACAddress = 'B8:27:EB:3A:15:72' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
-port = 3
-backlog = 1
-size = 1024
-s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-s.bind((hostMACAddress, port))
-s.listen(backlog)
-try:
-    client, clientInfo = s.accept()
-    while 1:
-        data = client.recv(size)
-        if data:
-            print(data)
-            client.send(data) # Echo back to client
-except:	
-    print("Closing socket")
-    client.close()
-    s.close()
+ser = serial.Serial('/dev/rfcomm1',19200,timeout=5)
+
+
+
+if ser.isOpen():
+
+    try:
+               #and discard all that is in buffer
+
+        #write data
+        ser.write("i")
+        print("i")
+
+        time.sleep(0.5)  #give the serial port sometime to receive the data
+
+
+        while True:
+            try:
+                response = ser.readline()
+                if(response!=''):
+                    print("read data: " + response)
+                    ser.write('o')
+            except KeyboardInterrupt:
+                print '^C received, shutting down the web server'
+                ser.close()
+                os.system('sudo rfcomm release rfcomm1') 
+                
+
+    except Exception, e1:
+        print "error communicating...: " + str(e1)
+        os.system('sudo rfcomm release rfcomm1')
+
+else:
+    print "cannot open serial port "
+    os.system('sudo rfcomm release rfcomm1') 
+

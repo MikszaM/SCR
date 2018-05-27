@@ -1,17 +1,39 @@
-"""
-A simple Python script to send messages to a sever over Bluetooth
-using PyBluez (with Python 2).
-"""
+import serial
+import os
+import time
 
-import bluetooth
 
-serverMACAddress = 'B8:27:EB:3A:15:72'
-port = 3
-s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-s.connect((serverMACAddress, port))
-while 1:
-    text = raw_input() # Note change to the old (Python 2) raw_input
-    if text == "quit":
-    break
-    s.send(text)
-sock.close()
+MAC_ADDR='00:12:6F:36:F3:72 1'
+command = 'sudo rfcomm bind /dev/rfcomm1 '+MAC_ADDR
+os.system(command)
+
+ser = serial.Serial('/dev/rfcomm1',19200,timeout=5)
+
+
+
+if ser.isOpen():
+
+    try:
+               #and discard all that is in buffer
+
+        #write data
+        ser.write("i")
+        print("i")
+
+        time.sleep(0.5)  #give the serial port sometime to receive the data
+
+        numOfLines = 0
+
+        while True:
+            response = ser.readline()
+            if(response!=''):
+                print("read data: " + response)
+        ser.close()
+        os.system('sudo rfcomm release rfcomm1') 
+    except Exception, e1:
+        print "error communicating...: " + str(e1)
+        os.system('sudo rfcomm release rfcomm1')
+
+else:
+    print "cannot open serial port "
+    os.system('sudo rfcomm release rfcomm1') 
