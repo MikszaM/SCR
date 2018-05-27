@@ -3,6 +3,12 @@ import time
 import serial
 
 
+#MAC_ADDRES SERWERA
+MAC_ADDR='B8:27:EB:3A:15:27 1'
+command = 'sudo rfcomm bind /dev/rfcomm1 '+MAC_ADDR
+os.system(command)
+
+
 ser = serial.Serial('/dev/rfcomm1',19200,timeout=5)
 
 
