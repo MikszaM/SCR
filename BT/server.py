@@ -17,18 +17,14 @@ if ser.isOpen():
                #and discard all that is in buffer
 
         #write data
-        ser.write("i")
-        print("i")
 
-        time.sleep(0.5)  #give the serial port sometime to receive the data
-
+        
 
         while True:
             try:
                 response = ser.readline()
                 if(response!=''):
                     print("read data: " + response)
-                    ser.write('o')
             except KeyboardInterrupt:
                 print '^C received, shutting down the web server'
                 ser.close()
