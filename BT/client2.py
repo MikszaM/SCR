@@ -1,15 +1,13 @@
-from bluetooth import *
+import bluetooth
 
-# Create the client socket
-client_socket=BluetoothSocket( RFCOMM )
+bd_addr = "2C:33:7A:F0:44:36"
 
-client_socket.connect(("B8:27:EB:3A:15:72", 3))
+port = 1
 
-client_socket.send("Hello World")
+sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+sock.connect((bd_addr, port))
 
-print "Finished"
+sock.send("hello!!")
 
-client_socket.close()
-
-
+sock.close()
 
