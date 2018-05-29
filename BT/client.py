@@ -4,7 +4,7 @@ import serial
 
 
 #MAC_ADDRES SERWERA
-MAC_ADDR='B8:27:EB:3A:15:27 1'
+MAC_ADDR='B8:27:EB:3A:15:72 1'
 command = 'sudo rfcomm bind /dev/rfcomm1 '+MAC_ADDR
 os.system(command)
 
@@ -19,8 +19,9 @@ if ser.isOpen():
                #and discard all that is in buffer
 
         #write data
-        ser.write("My data")
-        print("My data")
+        while True:
+            ser.write("My data")
+            print("My data")
 
         
     except Exception, e1:

@@ -2,8 +2,9 @@ import os
 import time
 import serial
 
+#2C:33:7A:F0:44:36
 #MAC_ADDRES KLIENTA
-MAC_ADDR='2C:33:7A:F0:44:36 1'
+MAC_ADDR='B8:27:EB:3A:15:72 1'
 command = 'sudo rfcomm bind /dev/rfcomm1 '+MAC_ADDR
 os.system(command)
 
