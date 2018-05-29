@@ -1,13 +1,17 @@
+"""
+A simple Python script to send messages to a sever over Bluetooth
+using PyBluez (with Python 2).
+"""
+
 import bluetooth
 
-bd_addr = "2C:33:7A:F0:44:36"
-
-port = 1
-
-sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
-sock.connect((bd_addr, port))
-
-sock.send("hello!!")
-
+serverMACAddress = ' B8:27:EB:3A:15:72'
+port = 3
+s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+s.connect((serverMACAddress, port))
+while 1:
+    text = raw_input() # Note change to the old (Python 2) raw_input
+    if text == "quit":
+    break
+    s.send(text)
 sock.close()
-
