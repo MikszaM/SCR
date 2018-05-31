@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 
-#define PIN   0
+#define PIN   28
 
 void parse_bin(char *string, char *d, int invert, int repeat) {
    int len = strlen(string), delay = atoi(d);;
