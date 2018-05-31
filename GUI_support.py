@@ -9,6 +9,8 @@
 
 
 import sys
+sys.path.append('/home/pi/SCR/TCP')
+import client as tcp
 
 try:
     from Tkinter import *
@@ -35,6 +37,7 @@ def set_Tk_var():
 
 def Send():
     print('GUI_support.Send')
+    tcp.run()
     a=str(DataSend.get())
     print(a)
     DataRec.set(a)
