@@ -67,7 +67,7 @@ proc vTclWindow.top37 {base} {
     vTcl::widgets::core::toplevel::createCmd $top -class Toplevel \
         -background {#d9d9d9} -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 520x265+55+15
+    wm geometry $top 600x450+699+262
     update
     # set in toplevel.wgt.
     global vTcl
@@ -154,33 +154,33 @@ proc vTclWindow.top37 {base} {
     # SETTING GEOMETRY
     ###################
     place $top.rad38 \
-        -in $top -x 300 -y 40 -anchor nw -bordermode ignore 
+        -in $top -x 320 -y 80 -anchor nw -bordermode ignore 
     place $top.rad39 \
-        -in $top -x 300 -y 90 -anchor nw -bordermode ignore 
+        -in $top -x 320 -y 130 -anchor nw -bordermode ignore 
     place $top.rad40 \
-        -in $top -x 300 -y 140 -width 54 -relwidth 0 -height 21 -relheight 0 \
+        -in $top -x 320 -y 180 -width 54 -relwidth 0 -height 21 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.rad41 \
-        -in $top -x 300 -y 190 -anchor nw -bordermode ignore 
+        -in $top -x 320 -y 230 -anchor nw -bordermode ignore 
     place $top.but42 \
-        -in $top -x 420 -y 50 -width 77 -relwidth 0 -height 37 -relheight 0 \
+        -in $top -x 460 -y 90 -width 77 -relwidth 0 -height 37 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.ent44 \
-        -in $top -x 120 -y 40 -anchor nw -bordermode ignore 
+        -in $top -x 120 -y 80 -anchor nw -bordermode ignore 
     place $top.lab45 \
-        -in $top -x 110 -y 80 -anchor nw -bordermode ignore 
+        -in $top -x 110 -y 150 -anchor nw -bordermode ignore 
     place $top.lab46 \
-        -in $top -x 110 -y 120 -anchor nw -bordermode ignore 
+        -in $top -x 110 -y 180 -anchor nw -bordermode ignore 
     place $top.lab47 \
-        -in $top -x 20 -y 80 -anchor nw -bordermode ignore 
+        -in $top -x 20 -y 150 -anchor nw -bordermode ignore 
     place $top.lab48 \
-        -in $top -x 30 -y 220 -anchor nw -bordermode ignore 
+        -in $top -x 330 -y 290 -anchor nw -bordermode ignore 
     place $top.lab38 \
-        -in $top -x 20 -y 170 -anchor nw -bordermode ignore 
+        -in $top -x 10 -y 240 -anchor nw -bordermode ignore 
     place $top.lab39 \
-        -in $top -x 20 -y 40 -anchor nw -bordermode ignore 
+        -in $top -x 30 -y 80 -anchor nw -bordermode ignore 
     place $top.lab42 \
-        -in $top -x 120 -y 170 -width 106 -relwidth 0 -height 29 -relheight 0 \
+        -in $top -x 130 -y 240 -width 106 -relwidth 0 -height 29 -relheight 0 \
         -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>

@@ -67,7 +67,7 @@ proc vTclWindow.top37 {base} {
     vTcl::widgets::core::toplevel::createCmd $top -class Toplevel \
         -background {#d9d9d9} -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 520x265+55+15
+    wm geometry $top 600x450+699+262
     update
     # set in toplevel.wgt.
     global vTcl
@@ -78,7 +78,7 @@ proc vTclWindow.top37 {base} {
     wm overrideredirect $top 0
     wm resizable $top 1 1
     wm deiconify $top
-    wm title $top "SCR"
+    wm title $top "New Toplevel"
     vTcl:DefineAlias "$top" "Toplevel1" vTcl:Toplevel:WidgetProc "" 1
     radiobutton $top.rad38 \
         -activebackground {#d9d9d9} -activeforeground black \
@@ -136,51 +136,46 @@ proc vTclWindow.top37 {base} {
         -text Info -textvariable Info 
     vTcl:DefineAlias "$top.lab48" "Label4" vTcl:WidgetProc "Toplevel1" 1
     label $top.lab38 \
-        -activebackground {#f9f9f9} -activeforeground black \
-        -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
-        -text {Data received} 
+        -background {#d9d9d9} -foreground {#000000} -text {Data received} 
     vTcl:DefineAlias "$top.lab38" "Label5" vTcl:WidgetProc "Toplevel1" 1
     label $top.lab39 \
-        -activebackground {#f9f9f9} -activeforeground black \
-        -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
-        -text {Data to send} 
+        -background {#d9d9d9} -foreground {#000000} -text {Data to send} 
     vTcl:DefineAlias "$top.lab39" "Label6" vTcl:WidgetProc "Toplevel1" 1
     label $top.lab42 \
-        -activebackground {#f9f9f9} -activeforeground black \
-        -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
-        -relief ridge -textvariable DataRec 
+        -background {#d9d9d9} -foreground {#000000} -relief ridge -text {} \
+        -textvariable DataRec 
     vTcl:DefineAlias "$top.lab42" "Label7" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
     place $top.rad38 \
-        -in $top -x 300 -y 40 -anchor nw -bordermode ignore 
+        -in $top -x 320 -y 80 -anchor nw -bordermode ignore 
     place $top.rad39 \
-        -in $top -x 300 -y 90 -anchor nw -bordermode ignore 
+        -in $top -x 320 -y 130 -anchor nw -bordermode ignore 
     place $top.rad40 \
-        -in $top -x 300 -y 140 -width 54 -relwidth 0 -height 21 -relheight 0 \
+        -in $top -x 320 -y 180 -width 54 -relwidth 0 -height 21 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.rad41 \
-        -in $top -x 300 -y 190 -anchor nw -bordermode ignore 
+        -in $top -x 320 -y 230 -anchor nw -bordermode ignore 
     place $top.but42 \
-        -in $top -x 420 -y 50 -width 77 -relwidth 0 -height 37 -relheight 0 \
+        -in $top -x 460 -y 90 -width 77 -relwidth 0 -height 37 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.ent44 \
-        -in $top -x 120 -y 40 -anchor nw -bordermode ignore 
+        -in $top -x 120 -y 80 -anchor nw -bordermode ignore 
     place $top.lab45 \
-        -in $top -x 110 -y 80 -anchor nw -bordermode ignore 
+        -in $top -x 110 -y 150 -anchor nw -bordermode ignore 
     place $top.lab46 \
-        -in $top -x 110 -y 120 -anchor nw -bordermode ignore 
+        -in $top -x 110 -y 180 -anchor nw -bordermode ignore 
     place $top.lab47 \
-        -in $top -x 20 -y 80 -anchor nw -bordermode ignore 
+        -in $top -x 20 -y 150 -anchor nw -bordermode ignore 
     place $top.lab48 \
-        -in $top -x 30 -y 220 -anchor nw -bordermode ignore 
+        -in $top -x 330 -y 290 -anchor nw -bordermode ignore 
     place $top.lab38 \
-        -in $top -x 20 -y 170 -anchor nw -bordermode ignore 
+        -in $top -x 10 -y 240 -anchor nw -bordermode ignore 
     place $top.lab39 \
-        -in $top -x 20 -y 40 -anchor nw -bordermode ignore 
+        -in $top -x 30 -y 80 -anchor nw -bordermode ignore 
     place $top.lab42 \
-        -in $top -x 120 -y 170 -width 106 -relwidth 0 -height 29 -relheight 0 \
+        -in $top -x 130 -y 240 -width 106 -relwidth 0 -height 29 -relheight 0 \
         -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>
