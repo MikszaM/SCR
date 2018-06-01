@@ -12,9 +12,16 @@ import sys
 from os.path import expanduser
 home = expanduser("~")
 
-HOST = 'Laptop'  #or Raspi
+HOST = 'Raspi'  #or Raspi
 sys.path.append(home+'/SCR/'+HOST+'/TCP')
 import TCP_client
+import TCP_server
+sys.path.append(home+'/SCR/'+HOST+'/UDP')
+import UDP_client
+import UDP_server
+sys.path.append(home+'/SCR/'+HOST+'/BT')
+import BT_client
+import BT_server
 
 try:
     from Tkinter import *
