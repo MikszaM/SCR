@@ -9,9 +9,11 @@ def run():
     print >>sys.stderr, 'starting up on %s port %s' % server_address
     sock.bind(server_address)
     # Listen for incoming connections
-    sock.listen(1)
-
     while True:
+        # Listen for incoming connections
+        sock.listen(1)
+
+    
         # Wait for a connection
         print >>sys.stderr, 'waiting for a connection'
         connection, client_address = sock.accept()
@@ -20,11 +22,11 @@ def run():
             print >>sys.stderr, 'connection from', client_address
 
             # Receive the data in small chunks and retransmit it
-            while True:
-                data = connection.recv(16)
-		if(data!=''):
-                    print >>sys.stderr, 'received "%s"' % data
-		    break
+            
+            data = connection.recv(16)
+	    if(str(data)!=''):
+                print >>sys.stderr, 'received "%s"' % data
+		
            
         finally:
             # Clean up the connection

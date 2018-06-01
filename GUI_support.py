@@ -14,7 +14,7 @@ import thread
 from os.path import expanduser
 home = expanduser("~")
 
-HOST = 'Laptop'  #or Raspi
+HOST = 'Raspi'  #or Raspi
 sys.path.append(home+'/SCR/'+HOST+'/TCP')
 import TCP_client
 import TCP_server
