@@ -14,7 +14,7 @@ import thread
 from os.path import expanduser
 home = expanduser("~")
 
-HOST = 'Raspi'  #or Raspi
+HOST = 'Laptop'  #or Raspi
 sys.path.append(home+'/SCR/'+HOST+'/TCP')
 import TCP_client
 import TCP_server
@@ -61,7 +61,9 @@ def Send():
     print('GUI_support.Send')
     a=str(DataSend.get())
     print(a)
-    thread.start_new_thread ( TCP_client.send, (a,) )
+    #thread.start_new_thread ( TCP_client.send, (a,) )
+    #thread.start_new_thread ( UDP_client.send, (a,) )
+    thread.start_new_thread ( BT_client.send, (a,) )
     DataRec.set(a)
     sys.stdout.flush()
 
@@ -94,6 +96,8 @@ def destroy_window():
 if __name__ == '__main__':
     import GUI
     GUI.vp_start_gui()
+
+
 
 
 
