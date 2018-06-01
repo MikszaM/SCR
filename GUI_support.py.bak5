@@ -8,8 +8,9 @@
 #    May 31, 2018 09:14:51 AM
 #    Jun 01, 2018 12:58:22 AM
 
-import thread
+
 import sys
+import thread
 from os.path import expanduser
 home = expanduser("~")
 

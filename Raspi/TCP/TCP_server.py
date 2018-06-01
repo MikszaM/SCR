@@ -22,7 +22,9 @@ def run():
             # Receive the data in small chunks and retransmit it
             while True:
                 data = connection.recv(16)
-                print >>sys.stderr, 'received "%s"' % data
+		if(data!=''):
+                    print >>sys.stderr, 'received "%s"' % data
+		    break
            
         finally:
             # Clean up the connection

@@ -61,7 +61,7 @@ def Send():
     print('GUI_support.Send')
     a=str(DataSend.get())
     print(a)
-    thread.start_new_thread ( TCP_client.send, (a) )
+    thread.start_new_thread ( TCP_client.send, (a,) )
     DataRec.set(a)
     sys.stdout.flush()
 

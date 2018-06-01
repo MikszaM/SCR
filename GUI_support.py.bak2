@@ -53,7 +53,6 @@ def set_Tk_var():
 def Run_Servers():
     print('GUI_support.Run_Servers')
     thread.start_new_thread ( TCP_server.run, () )
-    
     thread.start_new_thread(UDP_server.run,())
     thread.start_new_thread( BT_server.run,())
     sys.stdout.flush()
