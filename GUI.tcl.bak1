@@ -150,11 +150,6 @@ proc vTclWindow.top37 {base} {
         -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
         -relief ridge -textvariable DataRec 
     vTcl:DefineAlias "$top.lab42" "Label7" vTcl:WidgetProc "Toplevel1" 1
-    button $top.but38 \
-        -activebackground {#d9d9d9} -background {#d9d9d9} \
-        -command Run_Servers -foreground {#000000} -highlightcolor black \
-        -takefocus {} -text {Run servers} 
-    vTcl:DefineAlias "$top.but38" "Button2" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
@@ -186,9 +181,6 @@ proc vTclWindow.top37 {base} {
         -in $top -x 20 -y 40 -anchor nw -bordermode ignore 
     place $top.lab42 \
         -in $top -x 120 -y 170 -width 106 -relwidth 0 -height 29 -relheight 0 \
-        -anchor nw -bordermode ignore 
-    place $top.but38 \
-        -in $top -x 370 -y 130 -width 77 -relwidth 0 -height 37 -relheight 0 \
         -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>
