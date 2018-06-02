@@ -77,6 +77,22 @@ def Send():
     #DataRec.set(a)
     sys.stdout.flush()
 
+def SendUp(data,b):
+    print('GUI_support.SendUP')
+    print(data)
+    print(b)
+    if b=='2':
+        print('tcp')
+        thread.start_new_thread ( TCP_client.send, (data,) )
+    elif b=='3':
+        print('udp')
+        thread.start_new_thread ( UDP_client.send, (data,) )
+    elif b=='4':
+        print('http')
+    #DataRec.set(a)
+    sys.stdout.flush()
+
+
 def sel():
     print('GUI_support.sel')
  

@@ -4,6 +4,8 @@ from os.path import expanduser
 home = expanduser("~")
 sys.path.append(home+'/SCR')
 import GUI_support
+sys.path.append(home+'/SCR/Laptop/BT/Clock')
+import Temp
 
 def run():
     # Create a TCP/IP socket
@@ -20,4 +22,7 @@ def run():
         print >>sys.stderr, 'received %s bytes from %s' % (len(data), address)
         print >>sys.stderr, data
 	GUI_support.DataRec.set(data)
-        
+        if(str(data)=='in'):
+	    GUI_support.SendUp(str(Temp.read('i')),'3')
+	if(str(data)=='out'):
+	    GUI_support.SendUp(str(Temp.read('o')),'3')

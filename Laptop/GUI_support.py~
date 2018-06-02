@@ -77,6 +77,25 @@ def Send():
     #DataRec.set(a)
     sys.stdout.flush()
 
+def SendUp(data,b):
+    print('GUI_support.SendUP')
+    print(data)
+    print(b)
+    if b=='1':
+        print('bt')
+        thread.start_new_thread ( BT_client.send, (a,) )
+    if b=='2':
+        print('tcp')
+        thread.start_new_thread ( TCP_client.send, (data,) )
+    elif b=='3':
+        print('udp')
+        thread.start_new_thread ( UDP_client.send, (data,) )
+    elif b=='4':
+        print('http')
+    #DataRec.set(a)
+    sys.stdout.flush()
+
+
 def sel():
     print('GUI_support.sel')
  
@@ -97,8 +116,6 @@ def destroy_window():
 if __name__ == '__main__':
     import GUI
     GUI.vp_start_gui()
-
-
 
 
 

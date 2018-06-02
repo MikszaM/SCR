@@ -118,13 +118,8 @@ proc vTclWindow.top37 {base} {
     label $top.lab45 \
         -activebackground {#f9f9f9} -activeforeground black \
         -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
-        -text {[Light number] [ON/OFF]} 
+        -text {[Light number] [on/off]} 
     vTcl:DefineAlias "$top.lab45" "Label1" vTcl:WidgetProc "Toplevel1" 1
-    label $top.lab46 \
-        -activebackground {#f9f9f9} -activeforeground black \
-        -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
-        -text {Temp [In/Out]} 
-    vTcl:DefineAlias "$top.lab46" "Label2" vTcl:WidgetProc "Toplevel1" 1
     label $top.lab47 \
         -activebackground {#f9f9f9} -activeforeground black \
         -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
@@ -155,6 +150,11 @@ proc vTclWindow.top37 {base} {
         -background {#d9d9d9} -command Run_Servers -foreground {#000000} \
         -highlightcolor black -text {Run servers} 
     vTcl:DefineAlias "$top.but38" "Button2" vTcl:WidgetProc "Toplevel1" 1
+    label $top.lab40 \
+        -activebackground {#f9f9f9} -activeforeground black \
+        -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
+        -text {[1,2,0-both] [on,off]} 
+    vTcl:DefineAlias "$top.lab40" "Label1_1" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY
     ###################
@@ -174,8 +174,6 @@ proc vTclWindow.top37 {base} {
         -in $top -x 120 -y 40 -anchor nw -bordermode ignore 
     place $top.lab45 \
         -in $top -x 110 -y 80 -anchor nw -bordermode ignore 
-    place $top.lab46 \
-        -in $top -x 110 -y 120 -anchor nw -bordermode ignore 
     place $top.lab47 \
         -in $top -x 20 -y 80 -anchor nw -bordermode ignore 
     place $top.lab48 \
@@ -190,6 +188,9 @@ proc vTclWindow.top37 {base} {
     place $top.but38 \
         -in $top -x 370 -y 130 -width 77 -relwidth 0 -height 37 -relheight 0 \
         -anchor nw -bordermode ignore 
+    place $top.lab40 \
+        -in $top -x 110 -y 120 -width 156 -height 19 -anchor nw \
+        -bordermode inside 
 
     vTcl:FireEvent $base <<Ready>>
 }

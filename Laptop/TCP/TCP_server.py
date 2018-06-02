@@ -2,8 +2,10 @@ import socket
 import sys
 from os.path import expanduser
 home = expanduser("~")
-sys.path.append(home+'/SCR')
+sys.path.append(home+'/SCR/Laptop')
 import GUI_support
+sys.path.append(home+'/SCR/Laptop/BT/Clock')
+import Temp
 
 def run():
     # Create a TCP/IP socket
@@ -30,6 +32,10 @@ def run():
             data = connection.recv(16)
 	    if(str(data)!=''):
 		GUI_support.DataRec.set(data)
+		if(str(data)=='in'):
+		    GUI_support.SendUp(str(Temp.read('i')),'2')
+		if(str(data)=='out'):
+		    GUI_support.SendUp(str(Temp.read('o')),'2')
                 print >>sys.stderr, 'received "%s"' % data
 		
            

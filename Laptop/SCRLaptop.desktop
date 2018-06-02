@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Terminal=false
-Exec=python /home/mikszam/SCR/GUI.py
+Terminal=true
+Exec=sudo python /home/mikszam/SCR/Laptop/GUI.py
 Name=SCR
 Name[en_US]=SCRLaptop
