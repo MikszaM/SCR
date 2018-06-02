@@ -1,5 +1,9 @@
 import socket
 import sys
+from os.path import expanduser
+home = expanduser("~")
+sys.path.append(home+'/SCR')
+import GUI_support
 
 def run():
     
@@ -25,6 +29,7 @@ def run():
             
             data = connection.recv(16)
 	    if(str(data)!=''):
+		GUI_support.DataRec.set(data)
                 print >>sys.stderr, 'received "%s"' % data
 		
            

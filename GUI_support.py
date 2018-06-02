@@ -23,7 +23,7 @@ import UDP_client
 import UDP_server
 sys.path.append(home+'/SCR/'+HOST+'/BT')
 import BT_client
-import BT_server
+#import BT_server
 
 try:
     from Tkinter import *
@@ -54,31 +54,32 @@ def Run_Servers():
     print('GUI_support.Run_Servers')
     thread.start_new_thread ( TCP_server.run, () )
     thread.start_new_thread(UDP_server.run,())
-    thread.start_new_thread( BT_server.run,())
+    #thread.start_new_thread( BT_server.run,())
     sys.stdout.flush()
 
 def Send():
     print('GUI_support.Send')
     a=str(DataSend.get())
     print(a)
-    #thread.start_new_thread ( TCP_client.send, (a,) )
-    #thread.start_new_thread ( UDP_client.send, (a,) )
-    thread.start_new_thread ( BT_client.send, (a,) )
-    DataRec.set(a)
-    sys.stdout.flush()
-
-def sel():
-    print('GUI_support.sel')
     b=str(Radio.get())
     print(b)
     if b=='1':
         print('bt')
+        thread.start_new_thread ( BT_client.send, (a,) )
     elif b=='2':
         print('tcp')
+        thread.start_new_thread ( TCP_client.send, (a,) )
     elif b=='3':
         print('udp')
+        thread.start_new_thread ( UDP_client.send, (a,) )
     elif b=='4':
         print('http')
+    #DataRec.set(a)
+    sys.stdout.flush()
+
+def sel():
+    print('GUI_support.sel')
+ 
     sys.stdout.flush()
 
 def init(top, gui, *args, **kwargs):
@@ -96,6 +97,8 @@ def destroy_window():
 if __name__ == '__main__':
     import GUI
     GUI.vp_start_gui()
+
+
 
 
 

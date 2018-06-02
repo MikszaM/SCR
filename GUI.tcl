@@ -67,7 +67,7 @@ proc vTclWindow.top37 {base} {
     vTcl::widgets::core::toplevel::createCmd $top -class Toplevel \
         -background {#d9d9d9} -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 460x300+443+85
+    wm geometry $top 460x300+587+320
     update
     # set in toplevel.wgt.
     global vTcl
@@ -151,9 +151,9 @@ proc vTclWindow.top37 {base} {
         -relief ridge -textvariable DataRec 
     vTcl:DefineAlias "$top.lab42" "Label7" vTcl:WidgetProc "Toplevel1" 1
     button $top.but38 \
-        -activebackground {#d9d9d9} -background {#d9d9d9} \
-        -command Run_Servers -foreground {#000000} -highlightcolor black \
-        -takefocus {} -text {Run servers} 
+        -activebackground {#d9d9d9} -activeforeground black \
+        -background {#d9d9d9} -command Run_Servers -foreground {#000000} \
+        -highlightcolor black -text {Run servers} 
     vTcl:DefineAlias "$top.but38" "Button2" vTcl:WidgetProc "Toplevel1" 1
     ###################
     # SETTING GEOMETRY

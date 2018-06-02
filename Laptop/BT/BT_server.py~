@@ -8,7 +8,7 @@ import bluetooth
 def run():
     while 1:
         hostMACAddress = '' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
-        port = 1
+        port = 2
         backlog = 1
         size = 1024
         s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
@@ -19,8 +19,7 @@ def run():
             while 1:
                 data = client.recv(size)
                 if data:
-		    print('i got wth')
-                    print(str(data))
+                    print(data)
                     #client.send(data) # Echo back to client
         except:	
             print("Closing socket")

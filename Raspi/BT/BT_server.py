@@ -4,7 +4,11 @@ Bluetooth using PyBluez (with Python 2).
 """
 
 import bluetooth
-
+import sys
+from os.path import expanduser
+home = expanduser("~")
+sys.path.append(home+'/SCR')
+import GUI_support
 def run():
     while 1:
         hostMACAddress = '' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
@@ -20,6 +24,7 @@ def run():
                 data = client.recv(size)
                 if data:
                     print(data)
+		    GUI_supprt.DataRec.set(data)
                     #client.send(data) # Echo back to client
         except:	
             print("Closing socket")
