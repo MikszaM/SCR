@@ -9,6 +9,8 @@ from os.path import expanduser
 home = expanduser("~")
 sys.path.append(home+'/SCR')
 import GUI_support
+sys.path.append(home+'/SCR/Raspi/RF')
+import RF_client
 def run():
     while 1:
         hostMACAddress = '' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
@@ -24,7 +26,8 @@ def run():
                 data = client.recv(size)
                 if data:
                     print(data)
-		    GUI_supprt.DataRec.set(data)
+		    GUI_support.DataRec.set(data)
+		    RF_client.execute(data,'2')
                     #client.send(data) # Echo back to client
         except:	
             print("Closing socket")

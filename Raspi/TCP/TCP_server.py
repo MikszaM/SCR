@@ -2,8 +2,10 @@ import socket
 import sys
 from os.path import expanduser
 home = expanduser("~")
-sys.path.append(home+'/SCR')
+sys.path.append(home+'/SCR/Raspi')
 import GUI_support
+sys.path.append(home+'/SCR/Raspi/RF')
+import RF_client
 
 def run():
     
@@ -30,6 +32,7 @@ def run():
             data = connection.recv(16)
 	    if(str(data)!=''):
 		GUI_support.DataRec.set(data)
+		RF_client.execute(data,'2')
                 print >>sys.stderr, 'received "%s"' % data
 		
            
