@@ -78,6 +78,7 @@ def Send():
         thread.start_new_thread ( UDP_client.send, (a,) )
     elif b=='4':
         print('http')
+	thread.start_new_thread ( HTTP_client.send, (a,) )
     #DataRec.set(a)
     sys.stdout.flush()
 
@@ -93,6 +94,7 @@ def SendUp(data,b):
         thread.start_new_thread ( UDP_client.send, (data,) )
     elif b=='4':
         print('http')
+	thread.start_new_thread ( HTTP_client.send, (a,) )
     #DataRec.set(a)
     sys.stdout.flush()
 

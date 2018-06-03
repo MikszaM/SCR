@@ -36,7 +36,7 @@ class S(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length) 
         self._set_headers()
-	MyData=post_data.split("=")
+	MyData=post_data.split("=").replace('+',' ')
 	print(MyData[1]) 
 	if(MyData[1]!=''):
 	    GUI_support.DataRec.set(MyData[1])
