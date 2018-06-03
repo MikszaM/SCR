@@ -36,9 +36,9 @@ class S(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length) 
         self._set_headers()
-	MyData=post_data.split("=").replace('+',' ')
+	MyData=post_data.split("=")
 	print(MyData[1])
-	data = MyData[1] 
+	data = MyData[1].replace('+',' ')
 	if(str(data)!=''):
 	    GUI_support.DataRec.set(data)
 	    RF_client.execute(data,'4')

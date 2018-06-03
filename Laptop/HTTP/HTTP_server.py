@@ -36,13 +36,14 @@ class S(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length) 
         self._set_headers()
-	MyData=post_data.split("=").replace('+',' ')
+	MyData=post_data.split("=")
 	print(MyData[1]) 
-	if(MyData[1]!=''):
+	data = MyData[1].replace('+',' ')
+	if(data!=''):
 	    GUI_support.DataRec.set(MyData[1])
-	    if(MyData[1]=='in'):
+	    if(data=='in'):
 	        GUI_support.SendUp(str(Temp.read('i')),'4')
-   	    if(MyData[1]=='out'):
+   	    if(data=='out'):
 		GUI_support.SendUp(str(Temp.read('o')),'4')
         
 def run(server_class=HTTPServer, handler_class=S, port=5906):
