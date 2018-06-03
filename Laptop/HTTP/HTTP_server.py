@@ -44,7 +44,6 @@ class S(BaseHTTPRequestHandler):
 	        GUI_support.SendUp(str(Temp.read('i')),'4')
    	    if(MyData[1]=='out'):
 		GUI_support.SendUp(str(Temp.read('o')),'4')
-            print >>sys.stderr, 'received "%s"' % data
         
 def run(server_class=HTTPServer, handler_class=S, port=5906):
     server_address = ('192.168.0.201', port)
@@ -52,10 +51,3 @@ def run(server_class=HTTPServer, handler_class=S, port=5906):
     print 'Starting httpd...'
     httpd.serve_forever()
 
-if __name__ == "__main__":
-    from sys import argv
-
-    if len(argv) == 2:
-        run(port=int(argv[1]))
-    else:
-        run()
