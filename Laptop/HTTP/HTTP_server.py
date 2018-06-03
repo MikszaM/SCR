@@ -40,7 +40,7 @@ class S(BaseHTTPRequestHandler):
 	print(MyData[1]) 
 	data = MyData[1].replace('+',' ')
 	if(data!=''):
-	    GUI_support.DataRec.set(MyData[1])
+	    GUI_support.DataRec.set(data)
 	    if(data=='in'):
 	        GUI_support.SendUp(str(Temp.read('i')),'4')
    	    if(data=='out'):
