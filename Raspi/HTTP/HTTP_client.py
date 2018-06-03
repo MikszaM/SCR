@@ -1,4 +1,5 @@
 import requests
 
-r = requests.get('http://192.168.1.200:5906')
-print r.text
+def Send(MyData):
+    r = requests.post('http://192.168.0.201:5906', data={'data':MyData})
+

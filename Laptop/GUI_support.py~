@@ -24,6 +24,9 @@ import UDP_server
 sys.path.append(home+'/SCR/'+HOST+'/BT')
 import BT_client
 #import BT_server
+sys.path.append(home+'/SCR/'+HOST+'/HTTP')
+import HTTP_client
+import HTTP_server
 
 try:
     from Tkinter import *
@@ -54,6 +57,7 @@ def Run_Servers():
     print('GUI_support.Run_Servers')
     thread.start_new_thread ( TCP_server.run, () )
     thread.start_new_thread(UDP_server.run,())
+    thread.start_new_thread( HTTP_server.run,())
     #thread.start_new_thread( BT_server.run,())
     sys.stdout.flush()
 
@@ -81,9 +85,6 @@ def SendUp(data,b):
     print('GUI_support.SendUP')
     print(data)
     print(b)
-    if b=='1':
-        print('bt')
-        thread.start_new_thread ( BT_client.send, (a,) )
     if b=='2':
         print('tcp')
         thread.start_new_thread ( TCP_client.send, (data,) )

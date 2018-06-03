@@ -1,30 +1,61 @@
-#!/usr/bin/python
-from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
+#!/usr/bin/env python
+"""
+Very simple HTTP server in python.
+Usage::
+    ./dummy-web-server.py [<port>]
+Send a GET request::
+    curl http://localhost
+Send a HEAD request::
+    curl -I http://localhost
+Send a POST request::
+    curl -d "foo=bar&bin=baz" http://localhost
+"""
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import sys
+from os.path import expanduser
+home = expanduser("~")
+sys.path.append(home+'/SCR/Laptop')
+import GUI_support
+sys.path.append(home+'/SCR/Laptop/BT/Clock')
+import Temp
 
-PORT_NUMBER = 5906
+class S(BaseHTTPRequestHandler):
+    def _set_headers(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
 
-#This class will handles any incoming request from
-#the browser 
-class myHandler(BaseHTTPRequestHandler):
-	
-	#Handler for the GET requests
-	def do_GET(self):
-		self.send_response(200)
-		self.send_header('Content-type','text/html')
-		self.end_headers()
-		# Send the html message
-		self.wfile.write("Hello World !")
-		return
+    def do_GET(self):
+        self._set_headers()
+        self.wfile.write("<html><body><h1>hi!</h1></body></html>")
 
-try:
-	#Create a web server and define the handler to manage the
-	#incoming request
-	server = HTTPServer(('192.168.1.200', PORT_NUMBER), myHandler)
-	print 'Started httpserver on port ' , PORT_NUMBER
-	
-	#Wait forever for incoming htto requests
-	server.serve_forever()
+    def do_HEAD(self):
+        self._set_headers()
+        
+    def do_POST(self):
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length) 
+        self._set_headers()
+	MyData=post_data.split("=")
+	print(MyData[1]) 
+	if(MyData[1]!=''):
+	    GUI_support.DataRec.set(MyData[1])
+	    if(MyData[1]=='in'):
+	        GUI_support.SendUp(str(Temp.read('i')),'4')
+   	    if(MyData[1]=='out'):
+		GUI_support.SendUp(str(Temp.read('o')),'4')
+            print >>sys.stderr, 'received "%s"' % data
+        
+def run(server_class=HTTPServer, handler_class=S, port=5906):
+    server_address = ('192.168.0.201', port)
+    httpd = server_class(server_address, handler_class)
+    print 'Starting httpd...'
+    httpd.serve_forever()
 
-except KeyboardInterrupt:
-	print '^C received, shutting down the web server'
-	server.socket.close()
+if __name__ == "__main__":
+    from sys import argv
+
+    if len(argv) == 2:
+        run(port=int(argv[1]))
+    else:
+        run()
