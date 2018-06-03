@@ -1,5 +1,5 @@
 import requests
 
 def send(MyData):
-    r = requests.post('http://192.168.0.200:5906', data={'data':MyData})
+    r = requests.post('http://192.168.43.200:5906', data={'data':MyData})
 

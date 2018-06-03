@@ -45,7 +45,7 @@ class S(BaseHTTPRequestHandler):
             print >>sys.stderr, 'received "%s"' % data
         
 def run(server_class=HTTPServer, handler_class=S, port=5906):
-    server_address = ('192.168.0.200', port)
+    server_address = ('192.168.43.200', port)
     httpd = server_class(server_address, handler_class)
     print 'Starting httpd...'
     httpd.serve_forever()

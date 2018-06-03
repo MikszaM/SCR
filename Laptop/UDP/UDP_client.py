@@ -5,7 +5,7 @@ def send(data):
     # Create a UDP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    server_address = ('192.168.0.200', 5905)
+    server_address = ('192.168.43.200', 5905)
     
     try:
 

@@ -23,6 +23,6 @@ def run():
         print >>sys.stderr, data
 	GUI_support.DataRec.set(data)
         if(str(data)=='in'):
-	    print('current data'+Temp.read('i'))
+	    GUI_support.SendUp(str(Temp.read('i')),'3')
 	if(str(data)=='out'):
-	    print('current data'+Temp.read('o'))
+	    GUI_support.SendUp(str(Temp.read('o')),'3')

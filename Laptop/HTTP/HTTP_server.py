@@ -47,7 +47,7 @@ class S(BaseHTTPRequestHandler):
 		GUI_support.SendUp(str(Temp.read('o')),'4')
         
 def run(server_class=HTTPServer, handler_class=S, port=5906):
-    server_address = ('192.168.0.201', port)
+    server_address = ('192.168.43.201', port)
     httpd = server_class(server_address, handler_class)
     print 'Starting httpd...'
     httpd.serve_forever()

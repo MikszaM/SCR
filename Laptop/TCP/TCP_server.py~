@@ -33,9 +33,9 @@ def run():
 	    if(str(data)!=''):
 		GUI_support.DataRec.set(data)
 		if(str(data)=='in'):
-		    GUI_support.SendUp(str(Temp.read('i')),2)
+		    GUI_support.SendUp(str(Temp.read('i')),'2')
 		if(str(data)=='out'):
-		    GUI_support.SendUp(str(Temp.read('o')),2)
+		    GUI_support.SendUp(str(Temp.read('o')),'2')
                 print >>sys.stderr, 'received "%s"' % data
 		
            
